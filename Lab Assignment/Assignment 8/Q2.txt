@@ -1,0 +1,49 @@
+Data:
+
+- For sRead:
+dhcp-206-87-198-135:code luxiuyuan$ time ./sRead 10
+10
+
+real	0m0.114s
+user	0m0.108s
+sys	0m0.003s
+dhcp-206-87-198-135:code luxiuyuan$ time ./sRead 100
+85328
+
+real	0m1.077s
+user	0m1.061s
+sys	0m0.012s
+dhcp-206-87-198-135:code luxiuyuan$ time ./sRead 1000
+151168
+
+real	0m10.728s
+user	0m10.574s
+sys	0m0.113s
+
+
+
+- For aRead:
+dhcp-206-87-198-135:code luxiuyuan$ time ./aRead 10
+10
+
+real	0m0.016s
+user	0m0.011s
+sys	0m0.002s
+dhcp-206-87-198-135:code luxiuyuan$ time ./aRead 100
+85328
+
+real	0m0.015s
+user	0m0.012s
+sys	0m0.002s
+dhcp-206-87-198-135:code luxiuyuan$ time ./aRead 1000
+151168
+
+real	0m0.017s
+user	0m0.013s
+sys	0m0.003s
+
+Observations:
+aRead is faster than sRead.
+
+Explanation: 
+sRead is read in sequential, which means the CPU cannot do other things when the disk is doing DMA, it can start until the current reading is completed, so it is very slow; however, aRead allows CPU doing other things and notifying CPU to by a interruption to finish this request, so is must be faster than sRead.

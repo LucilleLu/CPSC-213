@@ -1,0 +1,25 @@
+Data:
+dhcp-206-87-198-135:code luxiuyuan$ time ./sRead 10
+10
+
+real	0m0.114s
+user	0m0.108s
+sys	0m0.003s
+dhcp-206-87-198-135:code luxiuyuan$ time ./sRead 100
+85328
+
+real	0m1.077s
+user	0m1.061s
+sys	0m0.012s
+dhcp-206-87-198-135:code luxiuyuan$ time ./sRead 1000
+151168
+
+real	0m10.728s
+user	0m10.574s
+sys	0m0.113s
+
+Observation: 
+the execution time increases as number of blocks increases.
+
+Explanation: 
+It reads blocks sequentially, so the time increases because more blocks spend more time.

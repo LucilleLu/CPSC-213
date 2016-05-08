@@ -1,0 +1,5 @@
+a) S7-static-call-stack.s use call stack, use the register r5 the top of the call stack, but S7-static-call-reg.s does not.
+
+b) The approach followed in stack has advantage when the code has nested function calls(the first callee calls another function).
+
+c) The approach followed in reg has advantage when the code has only one callee.

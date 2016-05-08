@@ -1,0 +1,71 @@
+Data:
+- For sRead:
+dhcp-206-87-198-135:code luxiuyuan$ time ./sRead 10
+10
+
+real	0m0.114s
+user	0m0.108s
+sys	0m0.003s
+dhcp-206-87-198-135:code luxiuyuan$ time ./sRead 100
+85328
+
+real	0m1.077s
+user	0m1.061s
+sys	0m0.012s
+dhcp-206-87-198-135:code luxiuyuan$ time ./sRead 1000
+151168
+
+real	0m10.728s
+user	0m10.574s
+sys	0m0.113s
+
+
+
+- For aRead:
+dhcp-206-87-198-135:code luxiuyuan$ time ./aRead 10
+10
+
+real	0m0.016s
+user	0m0.011s
+sys	0m0.002s
+dhcp-206-87-198-135:code luxiuyuan$ time ./aRead 100
+85328
+
+real	0m0.015s
+user	0m0.012s
+sys	0m0.002s
+dhcp-206-87-198-135:code luxiuyuan$ time ./aRead 1000
+151168
+
+real	0m0.017s
+user	0m0.013s
+sys	0m0.003s
+
+
+
+- For tRead:
+dhcp-206-87-198-135:code luxiuyuan$ time ./tRead 10
+10
+
+real	0m0.021s
+user	0m0.005s
+sys	0m0.013s
+dhcp-206-87-198-135:code luxiuyuan$ time ./tRead 100
+85328
+
+real	0m0.040s
+user	0m0.006s
+sys	0m0.033s
+dhcp-206-87-198-135:code luxiuyuan$ time ./tRead 1000
+151168
+
+real	0m0.278s
+user	0m0.011s
+sys	0m0.265s
+
+Observations:
+tRead is faster than sRead but slower than aRead.
+
+Explanation:
+It is reasonable that tRead is faster than sequential reading(sRead) because tRead use more than one thread, which means CPU goes back and forth between multiple threads. Since normal computer cannot have 100 or 1000 threads as we tested, CPU change to operate on another thread when the current running thread is reading; however, before it can change to another thread, it needs to save the current registers on stack, which takes more time than aRead with the number of blocks increases.
+

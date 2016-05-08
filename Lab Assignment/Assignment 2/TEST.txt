@@ -1,0 +1,54 @@
+We firstly load immediate, load values in registers so that we have values in registers for testing ALU instruction. Then, we test the ALU instruction by the values in register, and compare the result in my simulator with teacher’s simulator.  Finally, we test memory-access instructions, loading values in register and store values in register into memory which is built by declaring the initial values in memory addresses.
+
+ldi: load immediate
+load $0x00000040 to register r0.
+load $0x00000040 to register r2.
+load $0xffffffff to register r3.
+load $0xffffffff to register r4.
+load $0x00000400 to register r5.
+load $0xeeeeeeee to register r6.
+load $0x11223344 to register r7.
+
+rr move:
+move the value in r0 to r1.
+
+add:
+add the value in r0 and r1 together and put in the added value in register r1.
+
+and:
+use AND for the value in r1 and r3 and  put the result in register r3.
+
+inc:
+increase the value in r6 by 1.
+
+inca:
+increase the value in r7 by 4.
+
+dec:
+decrease the value in r3 by 1.
+
+deca:
+decrease the value in r4 by 4.
+
+not:
+negative the value in r5
+
+shift:
+shift the value in r6 to left by 1.
+shift the value in r6 to right by 1.
+
+lbo:
+load base + offset: load the value in memory address: 1*4+(the value in r1) into the register r2.
+load base + offset: load the value in memory address: 1*4+(the value in r2) into the register r3.
+
+ldx:
+load indexed: load the value in memory address: (the value in r0) + (the value in r2) into the register r5.
+
+load 0 to register r0.
+load a to register r1.
+
+sbo:
+store base + offset: store the value in r0 to the memory address r1.
+
+sdx:
+store indexed: store the value in r2 to the memory address: (the value in r0)+(the value in r2)*4.
